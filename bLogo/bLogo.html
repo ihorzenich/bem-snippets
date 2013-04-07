@@ -1,0 +1,34 @@
+<!--
+ .bLogo 
+ Контейнер для логотипа
+-->
+<div class="bLogo">
+  <a class="bLogo__link" href="/">
+    <img class="bLogo__icon" src="img/logo.png" alt="%LogoName%" title="%LogoName%">
+  </a>
+</div>
+<style>        
+.bLogo {}
+.bLogo__link {}
+.bLogo__icon {font: 0/0 a; border: 0;}
+</style>        
+
+<!-- 
+ Классический случай: главное лого сайта на главной странице
+ должно находится внутри layout-блока l-siteLogo, иметь h1 вместо div, а в alt и title=Название сайта/Компании
+ -->
+<div class="l-siteLogo">
+
+  <h1 class="bLogo">
+    <a class="bLogo__link" href="/">
+      <img class="bLogo__icon" src="img/logo.png" alt="%SiteName%" title="%SiteName%">
+    </a>
+  </h1>      
+
+  <!-- если лого на внутряке, заменяем h1 на div -->  
+  <div class="bLogo">
+    <a class="bLogo__link" href="/">
+      <img class="bLogo__icon" src="img/logo.png" alt="%SiteName%" title="%SiteName%">
+    </a>
+  </div>    
+</div>
