@@ -14,9 +14,47 @@
 </style>
 
 <!--
- Классический случай: главное меню сайта на первой странице
- должно иметь класс .mainNavigation и находится внутри layout-блока l-siteNavigation
+ Use case:
+ 1. Главное меню сайта должно иметь класс .mainNavigation
+    и находится внутри layout-блока .l-siteNavigation с WAI-ARIA role="navigation"
  -->
-<div class="l-siteNavigation">
-  div.mainNavigation.bMenuHoriz
+<div class="l-siteNavigation" role="navigation">
+  /* Сюда копируется блок .bMenuHoriz и переименовывается в .mainNavigation */
 </div>
+
+<!--
+ 2. Нижнее меню сайта должно иметь класс .bottomNavigation
+    и находится внутри layout-блока .l-siteNavigationBottom с WAI-ARIA role="navigation"
+ -->
+<div class="l-siteNavigationBottom" role="navigation">
+  /* Сюда копируется блок .bMenuHoriz и переименовывается в .bottomNavigation */
+</div>
+
+<!--
+ 3. Вложенное меню - это отдельный блок внутри блока.
+    Не блок внутри элемента! У него свои, отдельные независимые классы!
+
+    НЕ ul.mainNavigation__item__submenu
+    НО ul.mainNavigation__submenu
+
+    .mainNavigation {стили меню первого уровня}
+    .mainNavigation__item {стили элементов меню первого уровня}
+        .mainNavigation__submenu {стили меню второго уровня}
+        .mainNavigation__submenu__item {стили меню второго уровня}
+
+    Блок .mainNavigation__submenu может называться как угодно, необязательно с суфиксом __submenu и необзательно начинаться с mainNavigation.
+    Просто таким образом мы показываем что эти блоки семантически связаны.
+    Но на одном уровне с mainNavigation__submenu может находится и какой-то вообще другой .someOtherBlock, и что важно - на него не будет действовать каскад.
+-->
+<ul class="mainNavigation">
+  <li class="mainNavigation__item -state_current"><a class="mainNavigation__link" href="#"></a></li>
+  <li class="mainNavigation__item"><a class="mainNavigation__link" href="#"></a></li>
+  <li class="mainNavigation__item">
+    <a class="mainNavigation__link" href="#"></a>
+    <ul class="mainNavigation__submenu">
+      <li class="mainNavigation__submenu__item"><a class="mainNavigation__submenu__item__link" href="#"></a></li>
+      <li class="mainNavigation__submenu__item"><a class="mainNavigation__submenu__item__link" href="#"></a></li>
+    </ul>
+  </li>
+  <li class="mainNavigation__item"><a class="mainNavigation__link" href="#"></a></li>
+</ul>

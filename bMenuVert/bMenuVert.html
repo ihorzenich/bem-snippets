@@ -3,12 +3,41 @@
  Вертикальное меню списком
 -->
 <ul class="bMenuVert">
- <li class="bMenuVert__item -state_current"><a class="bMenuVert__link" href="#"></a></li>
- <li class="bMenuVert__item"><a class="bMenuVert__link" href="#"></a></li>
- <li class="bMenuVert__item"><a class="bMenuVert__link" href="#"></a></li>
+  <li class="bMenuVert__item -state_current"><a class="bMenuVert__link" href="#"></a></li>
+  <li class="bMenuVert__item"><a class="bMenuVert__link" href="#"></a></li>
+  <li class="bMenuVert__item"><a class="bMenuVert__link" href="#"></a></li>
 </ul>
 <style>
 .bMenuVert {display: block; margin: 0; padding: 0; list-style: none;}
 .bMenuVert__item {display: block; margin: 0; padding: 0; list-style: none; background: none; border: none;}
 .bMenuVert__link {}
 </style>
+
+<!--
+NB: Вложенное меню - это отдельный блок внутри блока.
+    Не блок внутри элемента! У него свои, отдельные независимые классы!
+
+    НЕ ul.mainNavigation__item__submenu
+    НО ul.mainNavigation__submenu
+
+    .mainNavigation {стили меню первого уровня}
+    .mainNavigation__item {стили элементов меню первого уровня}
+        .mainNavigation__submenu {стили меню второго уровня}
+        .mainNavigation__submenu__item {стили меню второго уровня}
+
+    Блок .mainNavigation__submenu может называться как угодно, необязательно с суфиксом __submenu и необзательно начинаться с mainNavigation.
+    Просто таким образом мы показываем что эти блоки семантически связаны.
+    Но на одном уровне с mainNavigation__submenu может находится и какой-то вообще другой .someOtherBlock, и что важно - на него не будет действовать каскад.
+-->
+<ul class="mainNavigation">
+  <li class="mainNavigation__item -state_current"><a class="mainNavigation__link" href="#"></a></li>
+  <li class="mainNavigation__item"><a class="mainNavigation__link" href="#"></a></li>
+  <li class="mainNavigation__item">
+    <a class="mainNavigation__link" href="#"></a>
+    <ul class="mainNavigation__submenu">
+      <li class="mainNavigation__submenu__item"><a class="mainNavigation__submenu__item__link" href="#"></a></li>
+      <li class="mainNavigation__submenu__item"><a class="mainNavigation__submenu__item__link" href="#"></a></li>
+    </ul>
+  </li>
+  <li class="mainNavigation__item"><a class="mainNavigation__link" href="#"></a></li>
+</ul>
